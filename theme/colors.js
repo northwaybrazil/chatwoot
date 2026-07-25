@@ -1,6 +1,4 @@
 const {
-  blue,
-  blueDark,
   green,
   greenDark,
   yellow,
@@ -14,19 +12,20 @@ const {
 } = require('@radix-ui/colors');
 
 export const colors = {
+  // Legacy design system primary. Step 500 is the Northway brand colour.
   woot: {
-    25: blue.blue2,
-    50: blue.blue3,
-    75: blue.blue4,
-    100: blue.blue5,
-    200: blue.blue7,
-    300: blue.blue8,
-    400: blueDark.blue11,
-    500: blueDark.blue10,
-    600: blueDark.blue9,
-    700: blueDark.blue8,
-    800: blueDark.blue6,
-    900: blueDark.blue2,
+    25: '#fffcfc',
+    50: '#fff7f7',
+    75: '#feeceb',
+    100: '#fde0de',
+    200: '#f5afad',
+    300: '#f09291',
+    400: '#f06d6d',
+    500: '#eb5757',
+    600: '#df4a4a',
+    700: '#c72e2e',
+    800: '#8d3534',
+    900: '#211414',
   },
   green: {
     50: greenDark.green12,
@@ -148,6 +147,23 @@ export const colors = {
       10: 'rgb(var(--blue-10) / <alpha-value>)',
       11: 'rgb(var(--blue-11) / <alpha-value>)',
       12: 'rgb(var(--blue-12) / <alpha-value>)',
+    },
+
+    // Semantic informational colour. Keeps the original blue so info states
+    // stay distinguishable from the brand colour.
+    info: {
+      1: 'rgb(var(--info-1) / <alpha-value>)',
+      2: 'rgb(var(--info-2) / <alpha-value>)',
+      3: 'rgb(var(--info-3) / <alpha-value>)',
+      4: 'rgb(var(--info-4) / <alpha-value>)',
+      5: 'rgb(var(--info-5) / <alpha-value>)',
+      6: 'rgb(var(--info-6) / <alpha-value>)',
+      7: 'rgb(var(--info-7) / <alpha-value>)',
+      8: 'rgb(var(--info-8) / <alpha-value>)',
+      9: 'rgb(var(--info-9) / <alpha-value>)',
+      10: 'rgb(var(--info-10) / <alpha-value>)',
+      11: 'rgb(var(--info-11) / <alpha-value>)',
+      12: 'rgb(var(--info-12) / <alpha-value>)',
     },
 
     ruby: {

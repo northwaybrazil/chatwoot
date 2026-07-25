@@ -72,12 +72,12 @@ function getDayOfTheWeek(date) {
 
 const COLOR_SCHEMES = {
   blue: [
-    'bg-n-blue-3 border border-n-blue-4/30',
-    'bg-n-blue-5 border border-n-blue-6/30',
-    'bg-n-blue-7 border border-n-blue-8/30',
-    'bg-n-blue-8 border border-n-blue-9/30',
-    'bg-n-blue-10 border border-n-blue-8/30',
-    'bg-n-blue-11 border border-n-blue-10/30',
+    'bg-n-info-3 border border-n-info-4/30',
+    'bg-n-info-5 border border-n-info-6/30',
+    'bg-n-info-7 border border-n-info-8/30',
+    'bg-n-info-8 border border-n-info-9/30',
+    'bg-n-info-10 border border-n-info-8/30',
+    'bg-n-info-11 border border-n-info-10/30',
   ],
   green: [
     'bg-n-teal-3 border border-n-teal-4/30',

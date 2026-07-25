@@ -85,6 +85,76 @@ não estiver configurada). Não inventamos um domínio Northway falso —
 configure `MAILER_SENDER_EMAIL` no ambiente de produção com o domínio
 real de vocês.
 
+## Auditoria de cores azuis remanescentes (design system "next")
+
+Depois do deploy, notou-se que abas, badges, links e o ícone circular do
+canto superior esquerdo do sidebar continuavam azuis mesmo com
+`theme/colors.js` (`n.brand`) já alterado. Investigação revelou a causa:
+
+**Achado central:** no design system "next" (`app/javascript/dashboard/components-next`),
+a escala `n-blue-1..12` (definida em `_next-colors.scss` como as variáveis
+CSS `--blue-1..12`) **é** a escala de marca/interativa — `--blue-9` valia
+exatamente `39 129 246` (`#2781F6`), o azul antigo do Chatwoot. Ela é usada
+diretamente (não via `n-brand`) em abas ativas, badges de contagem, links,
+checkboxes, inputs em foco e menus selecionados — por isso a troca de
+`n.brand` sozinha não bastou.
+
+### O que foi feito
+
+| Token / arquivo | Antes | Depois |
+| --- | --- | --- |
+| `--blue-1..12` (`_next-colors.scss`, light e dark) | escala azul (`#2781F6` no passo 9) | escala coral Northway (`#EB5757` no passo 9) |
+| `--text-blue`, `--solid-blue`, `--solid-blue-2`, `--border-blue-strong`, `--border-blue` | derivadas do azul | recalculadas a partir da escala coral |
+| **Novo token `--info-1..12` / `n.info`** | — | escala azul original, preservada para uso semântico (não é mais o padrão de nenhum componente, só usada explicitamente) |
+| `theme/colors.js` → paleta `woot` (design system antigo) | derivada de `@radix-ui/colors` blue | hex fixos na escala coral (passo 500 = `#EB5757`) |
+| `app/javascript/widget/assets/scss/woot.scss`, `.../super_admin/index.scss`, `.../widget-preview/components/Widget.vue` | mesmas variáveis derivadas do azul | mesmas derivadas recalculadas para coral |
+| `Banner.vue`, `label/Label.vue`, `BaseHeatmap.vue` (variante/cor `"blue"`) | usavam `n-blue-*` | repontados para `n-info-*` — são usos semânticos (banner informativo, etiqueta azul, heatmap), não de marca |
+| `components-next/icon/Logo.vue` (fallback SVG, sem `LOGO_THUMBNAIL` configurado) | círculo azul com bolha de chat (logo antigo do Chatwoot) | quadrado `#09090B` com monograma "N" branco, seguindo o padrão do design system Northway |
+| 8 hex hardcoded (`#2781F6`/`#1F93FF`/`#0080f8`) em `sdk.js`, `EmojiInput.vue`, `Dyte.vue`, `CreatePortalDialog.vue`, `AudioRecorder.vue`, `LabelSuggestion.vue`, `ChatInputWrap.vue`, `_icons.html.erb` | azul Chatwoot | `#EB5757` |
+
+**Por que não foi preciso editar os ~90 componentes individualmente:**
+todos os usos de `n-blue-*`/`text-woot-*`/`bg-woot-*` continuam funcionando
+exatamente como antes — só o valor por trás do token mudou. Os únicos
+componentes editados diretamente foram os 3 que usavam a variante
+**semântica** `"blue"` (que precisava continuar azul) e que, portanto,
+precisavam apontar para a nova escala `n-info-*` em vez de `n-blue-*`.
+
+**O que foi preservado, conforme pedido:**
+- Cores de etiquetas criadas pelo usuário (não são tokens de tema, são
+  hex arbitrários salvos por conta).
+- Vermelho de erro (`n-ruby-*`), âmbar de aviso (`n-amber-*`), verde de
+  sucesso (`n-teal-*`) — nenhum desses tokens foi tocado.
+- Cores dos canais WhatsApp/Instagram/Facebook (`#25D366`, `#1877F2` etc.)
+  — não fazem parte da escala `n-blue`/`woot`, ficaram intactas.
+- Banco, APIs, autenticação e regras de negócio — nada tocado.
+- Modo claro e escuro: a escala coral tem variantes `:root` e `.dark`
+  calculadas mantendo a mesma relação de contraste que a escala azul
+  original tinha (mesma "distância" perceptual entre os 12 passos).
+
+### Bolha de mensagem do agente (outgoing) — laranja suave dedicado
+
+O token `--solid-blue` (usado em `bg-n-solid-blue`) também controla o fundo
+das mensagens enviadas pelo agente (`message/bubbles/Base.vue`, bolha de
+e-mail em `Email/Index.vue` e o assistente Captain em `MessageList.vue`).
+A conversão mecânica inicial (derivada da mesma fórmula da escala `blue`)
+resultou num tom coral apagado. A pedido, foi ajustado para um laranja
+suave dedicado, mais quente e menos saturado que o coral principal:
+
+| | Claro | Escuro |
+| --- | --- | --- |
+| `--solid-blue` | `rgb(255 231 209)` — pêssego suave | `rgb(74 46 22)` — terracota abafado |
+| `--solid-blue-2` (gradiente da bolha de e-mail) | `rgb(255 244 232)` | `rgb(42 30 20)` |
+
+### Ícone do canto superior esquerdo — o que ele realmente é
+
+Não é logo da conta nem avatar do workspace: é o **fallback padrão do
+Chatwoot** (`components-next/icon/Logo.vue`), renderizado só quando
+`globalConfig.logoThumbnail` está vazio. Como a instalação já configurada
+usa a URL do Supabase como `LOGO_THUMBNAIL`, esse SVG só aparece se esse
+valor não estiver setado (ex.: banco de uma instalação antiga que ainda
+não rodou a atualização manual descrita mais abaixo, na seção de
+e-mails). Ele foi substituído pelo monograma "N" do design system.
+
 ## Pendências / follow-ups conhecidos
 
 1. **`BRAND_URL` e `WIDGET_BRAND_URL`** em `config/installation_config.yml`

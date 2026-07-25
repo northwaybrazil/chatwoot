@@ -23,7 +23,7 @@ const COLOR_CLASSES = {
   amber: 'bg-n-amber-2 outline-n-amber-4 text-n-amber-11',
   teal: 'bg-n-teal-2 outline-n-teal-4 text-n-teal-11',
   ruby: 'bg-n-ruby-2 outline-n-ruby-4 text-n-ruby-11',
-  blue: 'bg-n-blue-2 outline-n-blue-4 text-n-blue-11',
+  blue: 'bg-n-info-2 outline-n-info-4 text-n-info-11',
   iris: 'bg-n-iris-2 outline-n-iris-4 text-n-iris-11',
 };
 

@@ -29,18 +29,35 @@
     --iris-11: 87 83 198;
     --iris-12: 39 41 98;
 
-    --blue-1: 251 253 255;
-    --blue-2: 245 249 255;
-    --blue-3: 233 243 255;
-    --blue-4: 218 236 255;
-    --blue-5: 201 226 255;
-    --blue-6: 181 213 255;
-    --blue-7: 155 195 252;
-    --blue-8: 117 171 247;
-    --blue-9: 39 129 246;
-    --blue-10: 16 115 233;
-    --blue-11: 8 109 224;
-    --blue-12: 11 50 101;
+    // Brand/interactive scale. Step 9 is the Northway brand colour (#EB5757).
+    // This scale drives links, tabs, selected states, focus rings and badges.
+    --blue-1: 255 252 252;
+    --blue-2: 255 247 247;
+    --blue-3: 254 236 235;
+    --blue-4: 253 224 222;
+    --blue-5: 252 211 209;
+    --blue-6: 250 196 194;
+    --blue-7: 245 175 173;
+    --blue-8: 240 146 145;
+    --blue-9: 235 87 87;
+    --blue-10: 223 74 74;
+    --blue-11: 199 46 46;
+    --blue-12: 87 24 24;
+
+    // Informational scale: the original blue, kept for semantic "info" usage
+    // (info banners, blue label variant, report heatmaps).
+    --info-1: 251 253 255;
+    --info-2: 245 249 255;
+    --info-3: 233 243 255;
+    --info-4: 218 236 255;
+    --info-5: 201 226 255;
+    --info-6: 181 213 255;
+    --info-7: 155 195 252;
+    --info-8: 117 171 247;
+    --info-9: 39 129 246;
+    --info-10: 16 115 233;
+    --info-11: 8 109 224;
+    --info-12: 11 50 101;
 
     --ruby-1: 255 252 253;
     --ruby-2: 255 247 248;
@@ -112,20 +129,20 @@
     --surface-2: 255 255 255;
     --surface-active: 255 255 255;
     --background-input-box: 0, 0, 0, 0.03;
-    --text-blue: 1 22 44;
+    --text-blue: 44 14 14;
     --text-purple: 2 4 49;
     --text-amber: 37 24 1;
     --border-container: 236 236 236;
     --border-strong: 226 227 231;
     --border-weak: 234 234 234;
-    --border-blue-strong: 18 61 117;
+    --border-blue-strong: 117 26 26;
     --solid-1: 255 255 255;
     --solid-2: 255 255 255;
     --solid-3: 255 255 255;
     --solid-active: 255 255 255;
     --solid-amber: 255 228 181;
-    --solid-blue: 218 236 255;
-    --solid-blue-2: 251 253 255;
+    --solid-blue: 255 231 209;
+    --solid-blue-2: 255 244 232;
     --solid-iris: 230 231 255;
     --solid-purple: 230 231 255;
     --solid-red: 254 200 201;
@@ -143,7 +160,7 @@
     --alpha-3: 255, 255, 255, 0.96;
     --black-alpha-1: 0, 0, 0, 0.12;
     --black-alpha-2: 0, 0, 0, 0.04;
-    --border-blue: 39, 129, 246, 0.5;
+    --border-blue: 235, 87, 87, 0.5;
     --white-alpha: 255, 255, 255, 0.8;
   }
 
@@ -175,18 +192,31 @@
     --iris-11: 158 177 255;
     --iris-12: 224 223 254;
 
-    --blue-1: 10 17 28;
-    --blue-2: 15 24 38;
-    --blue-3: 15 39 72;
-    --blue-4: 10 49 99;
-    --blue-5: 18 61 117;
-    --blue-6: 29 84 134;
-    --blue-7: 40 89 156;
-    --blue-8: 48 106 186;
-    --blue-9: 39 129 246;
-    --blue-10: 21 116 231;
-    --blue-11: 126 182 255;
-    --blue-12: 205 227 255;
+    --blue-1: 26 17 17;
+    --blue-2: 33 20 20;
+    --blue-3: 60 24 24;
+    --blue-4: 80 26 26;
+    --blue-5: 96 32 32;
+    --blue-6: 116 42 42;
+    --blue-7: 141 53 52;
+    --blue-8: 181 68 67;
+    --blue-9: 235 87 87;
+    --blue-10: 244 106 106;
+    --blue-11: 255 158 158;
+    --blue-12: 255 216 214;
+
+    --info-1: 10 17 28;
+    --info-2: 15 24 38;
+    --info-3: 15 39 72;
+    --info-4: 10 49 99;
+    --info-5: 18 61 117;
+    --info-6: 29 84 134;
+    --info-7: 40 89 156;
+    --info-8: 48 106 186;
+    --info-9: 39 129 246;
+    --info-10: 21 116 231;
+    --info-11: 126 182 255;
+    --info-12: 205 227 255;
 
     --ruby-1: 25 17 19;
     --ruby-2: 30 21 23;
@@ -258,19 +288,19 @@
     --surface-2: 22 23 26;
     --surface-active: 53 57 66;
     --background-input-box: 255, 255, 255, 0.02;
-    --text-blue: 213 234 255;
+    --text-blue: 255 224 222;
     --text-purple: 232 233 254;
     --text-amber: 255 247 234;
     --border-strong: 46 45 50;
     --border-weak: 31 31 37;
-    --border-blue-strong: 201 226 255;
+    --border-blue-strong: 255 205 202;
     --solid-1: 23 23 26;
     --solid-2: 29 30 36;
     --solid-3: 44 45 54;
     --solid-active: 53 57 66;
     --solid-amber: 56 50 41;
-    --solid-blue: 15 57 102;
-    --solid-blue-2: 26 29 35;
+    --solid-blue: 74 46 22;
+    --solid-blue-2: 42 30 20;
     --solid-iris: 38 42 101;
     --solid-purple: 51 51 107;
     --solid-red: 90 33 34;
@@ -288,7 +318,7 @@
     --alpha-3: 33, 34, 38, 0.95;
     --black-alpha-1: 0, 0, 0, 0.3;
     --black-alpha-2: 0, 0, 0, 0.2;
-    --border-blue: 39, 129, 246, 0.5;
+    --border-blue: 235, 87, 87, 0.5;
     --border-container: 255, 255, 255, 0;
     --white-alpha: 255, 255, 255, 0.1;
   }
