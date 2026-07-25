@@ -58,6 +58,9 @@ module Chatwoot
     config.generators.javascripts = false
     config.generators.stylesheets = false
 
+    # Northway Hub: default installation language is Brazilian Portuguese.
+    config.i18n.default_locale = :pt_BR
+
     # Custom chatwoot configurations
     config.x = config_for(:app).with_indifferent_access
 

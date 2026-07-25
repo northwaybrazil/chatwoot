@@ -9,12 +9,12 @@ export const showBadgeOnFavicon = () => {
 
 export const initFaviconSwitcher = () => {
   const favicons = document.querySelectorAll('.favicon');
+  const { LOGO_THUMBNAIL: logoThumbnail } = window.globalConfig || {};
 
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
       favicons.forEach(favicon => {
-        const oldFileName = `/favicon-${favicon.sizes[[0]]}.png`;
-        favicon.href = oldFileName;
+        favicon.href = logoThumbnail || `/favicon-${favicon.sizes[[0]]}.png`;
       });
     }
   });
