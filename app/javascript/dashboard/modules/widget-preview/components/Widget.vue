@@ -307,11 +307,11 @@ const handleToggleWidget = () => {
 
   --background-color: 18 18 19;
   --border-strong: 52 52 52;
-  --border-weak: 38 38 42;
-  --solid-1: 23 23 26;
-  --solid-2: 29 30 36;
-  --solid-3: 44 45 54;
-  --solid-active: 53 57 66;
+  --border-weak: 39 39 39;
+  --solid-1: 24 24 24;
+  --solid-2: 32 32 32;
+  --solid-3: 48 48 48;
+  --solid-active: 59 59 59;
   --solid-amber: 42 37 30;
   --solid-blue: 74 46 22;
   --solid-iris: 102 58 14;
